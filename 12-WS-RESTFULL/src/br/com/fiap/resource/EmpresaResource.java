@@ -42,13 +42,11 @@ public class EmpresaResource {
 	}	
 	
 	//PUT REST/EMPRESA/CODIGO
-	
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response att (Empresa empresa, @PathParam("id") int codigo) {
-		
-		
+	
 		try {
 			empresa.setCodigo(codigo);
 			dao.alterar(empresa);
@@ -62,7 +60,6 @@ public class EmpresaResource {
 	}
 	
 	//DELETE REST/EMPRESA
-	
 	@DELETE
 	@Path("{id}")
 	public void remover(@PathParam("id") int codigo) {
@@ -78,13 +75,7 @@ public class EmpresaResource {
 		
 	}
 	
-	
-	
-	
-	
-	
 	//GET REST/EMPRESA/CODIGO
-	
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -97,8 +88,6 @@ public class EmpresaResource {
 			return null;
 		}
 	}
-	
-	
 	@POST // POST REST/EMPRESA
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Empresa empresa, @Context UriInfo url) {
@@ -118,7 +107,6 @@ public class EmpresaResource {
 
 		//HTTP Status code : 201 CREATED
 		return Response.created(builder.build()).build();
-		
 	}
 	
 	
