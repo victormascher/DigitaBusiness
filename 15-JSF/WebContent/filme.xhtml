@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Filmes</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+	
+		<h2>Cadasto de Filmes</h2>
+			
+		<div>
+			<h:outputLabel value="Titulo do Filme" for ="titulo"></h:outputLabel>	
+				<h:inputText value="#{filmeBean.filme.titulo}" id="titulo"></h:inputText>
+		</div>
+		
+		<div>
+			<h:outputLabel value="Classificação"></h:outputLabel>
+			<h:selectOneRadio value="#{filmeBean.filme.classificacao}" id ="classificacao">
+				<f:selectItem value="Adulto"></f:selectItem>
+				<f:selectItem value="Infantil" ></f:selectItem>
+				<f:selectItem value="Juvenil"></f:selectItem>
+			</h:selectOneRadio>	
+		</div>
+		
+		<div>
+			<h:outputLabel value="Duracao" for="duracao"></h:outputLabel>
+				<h:inputText value="#{filmeBean.filme.duracao}" id="duracao"></h:inputText>
+		</div>
+		
+		<div>
+			<h:outputLabel value="Estudio" for="estudio"></h:outputLabel>
+			<h:selectOneMenu value ="#{filmeBean.filme.estudio}" id="estudio">
+				<f:selectItem value="Warner" id="1"></f:selectItem>
+				<f:selectItem value="Fox"></f:selectItem>
+				<f:selectItem value="MGM"></f:selectItem>
+			</h:selectOneMenu>	
+		</div>
+		
+		<div>
+			<h:outputLabel value= "Nacionalidade" for="nacionalidade"></h:outputLabel>
+				<h:selectBooleanCheckbox value="#{filmeBean.filme.nacionalidade}" id="nacionalidade"></h:selectBooleanCheckbox>
+		</div>
+		
+		<div>
+			<h:commandButton value="Cadastrar filme!" actionListener="#{filmeBean.cadastrarFilme()}"></h:commandButton>
+		
+		</div>
+		
+		<h2>Tabela de Filmes</h2>
+		<div>
+			<h:dataTable value="#{filmeBean.listar()}" var="f">
+				<h:column>
+					<f:facet name="header">Titulo do Filme</f:facet>
+					#{f.titulo}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Classificação</f:facet>
+					#{f.classificacao}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Duração</f:facet>
+					#{f.duracao}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Estúdio</f:facet>
+					#{f.estudio}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nacionalidade</f:facet>
+					#{f.nacionalidade}
+				</h:column>
+			
+			</h:dataTable>
+		
+		
+		</div>
+		
+		
+		
+		
+	</h:form>
+
+
+
+
+
+</h:body>
+</html>
